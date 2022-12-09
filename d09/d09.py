@@ -12,11 +12,8 @@ def star(knots):
                 diff = hs[i-1] - hs[i]
                 re, im = diff.real, diff.imag
                 if max(abs(re), abs(im)) > 1:
-                    if abs(re) == 2:
-                        diff -= re/2
-                    if abs(im) == 2:
-                        diff -= im/2 * 1j
-    
+                    diff -= re/2 * (abs(re) == 2)
+                    diff -= im/2 * (abs(im) == 2) * 1j
                     hs[i] += diff
     
             visited.add(hs[-1])
